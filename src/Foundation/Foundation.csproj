@@ -34,6 +34,7 @@
     <!-- Optimizely Search & Navigation -->
     <PackageReference Include="EPiServer.Find.Cms" Version="16.3.0" />
     <PackageReference Include="EPiServer.Find.Commerce" Version="12.2.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.23.0" />
     <PackageReference Include="PowerSlice" Version="5.2.0" />
 
     <!-- Productivity enhancements, Tools, Other Add-ons -->
@@ -98,6 +99,7 @@
 	  <Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
 	  <Compile Remove="Infrastructure\Kpi\FilledInFormKpi.cs" />
 	  <Folder Include="Infrastructure\Kpi\" />
+	  <Folder Include="Custom\" />
 	  <Folder Include="wwwroot\" />
   </ItemGroup>
 </Project>
