@@ -35,7 +35,7 @@ namespace Foundation.Features.Blocks.BootstrapCardBlock
         [CultureSpecific]
         [Display(Name = "Card header",
          Order = 10)]
-        public virtual string CardHeader { get; set; }
+        public virtual int CardHeader { get; set; }
         
         [CultureSpecific]
         [Display(Name = "Card title",

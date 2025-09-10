@@ -10,7 +10,7 @@
 
 <div class="@Model.CurrentBlock.CssClass @(Model.CurrentBlock.Padding + " " + Model.CurrentBlock.Margin)">
 	<div class="card @Model.CurrentBlock.CardAlignment">
-	@if (!@Model.CurrentBlock.CardHeader.IsNullOrEmpty()) 
+	@* @if (!@Model.CurrentBlock.CardHeader.IsNullOrEmpty()) 
 	{ 
 			<h6 class="card-header">@Html.PropertyFor(m => m.CurrentBlock.CardHeader)</h6>
 	}
@@ -20,7 +20,7 @@
 		{
 			<div>@Html.PropertyFor(m => m.CurrentBlock.CardHeader)</div>
 		}
-	}
+	} *@
 
 	@if (Html.IsInEditMode())
 	{
