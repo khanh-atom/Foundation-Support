@@ -235,6 +235,17 @@ namespace Foundation
             {
                 o.ContentAssetsBasePath = ContentAssetsBasePath.ContentOwner;
             });
+            // Configure CatalogOptions
+            services.Configure<CatalogOptions>(options =>
+            {
+                options.ArchivedThreshold = 60; // Set to 60 days
+            });
+
+            // Configure CatalogOptions
+            services.Configure<CatalogOptions>(options =>
+            {
+                options.SimplifiedCatalogListingThreshold = 100; // Set your desired threshold
+            });
 
             // Add ODP MA Connector (note: requires API key in appsettings.json)
             services.AddMarketingAutomationIntegrationODP(_configuration);
