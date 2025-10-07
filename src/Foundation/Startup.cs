@@ -2,8 +2,8 @@
 using Advanced.CMS.BulkEdit;
 using Advanced.CMS.GroupingHeader;
 using EPiServer.Authorization;
+using EPiServer.Cms.Shell.UI.Dashboard.BuiltInGadgets.Internal;
 using EPiServer.Cms.TinyMce.SpellChecker;
-using EPiServer.Commerce.Dashboard;
 using EPiServer.Commerce.Visistor;
 using EPiServer.ContentApi.Cms;
 using EPiServer.ContentApi.Cms.Internal;
@@ -16,6 +16,8 @@ using EPiServer.Labs.ProjectEnhancements;
 using EPiServer.Marketing.Testing.Web.Initializers;
 using EPiServer.OpenIDConnect;
 using EPiServer.ServiceApi;
+using EPiServer.Shell.Dashboard.DashboardLayoutBuilder.Internal;
+using EPiServer.Shell.Dashboard.Internal;
 using EPiServer.Shell.Modules;
 using EPiServer.Social.Framework;
 using Foundation.Features.Checkout.Payments;
@@ -243,9 +245,20 @@ namespace Foundation
                 options.ArchivedThreshold = 60; // Set to 60 days
             });
 
-            services.Configure<DashboardOptions>(options =>
+            services.Configure<EPiServer.Commerce.Dashboard.DashboardOptions >(options =>
             {
                 options.EnableTrackingSession = true;
+                
+            });
+
+            // From the codebase - dashboard uses configurable gadgets
+            services.Configure<DashboardOptions>(o =>
+            {
+                o.DashboardRows = DashboardBuilder.Create()
+                    .AddRow()
+                    .AddColumn(new WorkflowStatusGadget()).SetColumnStyle(ColumnStyle.TwoThird)
+                    .AddColumn(new BrokenLinksGadget()).SetColumnStyle(ColumnStyle.OneThird)
+                    .Build();
             });
 
             // Configure CatalogOptions

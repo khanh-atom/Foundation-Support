@@ -99,7 +99,6 @@
 	  <Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
 	  <Compile Remove="Infrastructure\Kpi\FilledInFormKpi.cs" />
 	  <Folder Include="Infrastructure\Kpi\" />
-	  <Folder Include="Custom\" />
 	  <Folder Include="wwwroot\" />
   </ItemGroup>
 </Project>
