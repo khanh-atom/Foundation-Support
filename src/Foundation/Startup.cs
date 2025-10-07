@@ -3,6 +3,8 @@ using Advanced.CMS.BulkEdit;
 using Advanced.CMS.GroupingHeader;
 using EPiServer.Authorization;
 using EPiServer.Cms.TinyMce.SpellChecker;
+using EPiServer.Commerce.Dashboard;
+using EPiServer.Commerce.Visistor;
 using EPiServer.ContentApi.Cms;
 using EPiServer.ContentApi.Cms.Internal;
 using EPiServer.ContentApi.Commerce;
@@ -241,6 +243,11 @@ namespace Foundation
                 options.ArchivedThreshold = 60; // Set to 60 days
             });
 
+            services.Configure<DashboardOptions>(options =>
+            {
+                options.EnableTrackingSession = true;
+            });
+
             // Configure CatalogOptions
             services.Configure<CatalogOptions>(options =>
             {
@@ -284,6 +291,8 @@ namespace Foundation
             app.UseGetaCategoriesFind();
 
             app.UseAnonymousId();
+            app.UseVisitor();
+
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors();
