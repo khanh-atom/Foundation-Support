@@ -1,0 +1,26 @@
+{
+  "readme": "To open this file inside VSCode, you need to install VSCode extension \"Kanban atom8n\"",
+  "columns": [
+    {
+      "id": "col_z2l38z_mgknshl5",
+      "title": "To Do",
+      "order": 0,
+      "boardId": "",
+      "tasks": []
+    },
+    {
+      "id": "col_4mqoih_mgknshl5",
+      "title": "In Progress",
+      "order": 1,
+      "boardId": "",
+      "tasks": []
+    },
+    {
+      "id": "col_zasxea_mgknshl5",
+      "title": "Done",
+      "order": 2,
+      "boardId": "",
+      "tasks": []
+    }
+  ]
+}
