@@ -98,6 +98,7 @@
 	  <None Remove="Features\MultiShipment\**" />
 	  <Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
 	  <Compile Remove="Infrastructure\Kpi\FilledInFormKpi.cs" />
+	  <Folder Include="Custom\Episerver-util-api\CMS\" />
 	  <Folder Include="Infrastructure\Kpi\" />
 	  <Folder Include="wwwroot\" />
   </ItemGroup>

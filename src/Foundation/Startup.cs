@@ -261,6 +261,17 @@ namespace Foundation
                     .Build();
             });
 
+            // The protected modules use the CmsPolicyNames.DefaultShellModule authorization policy. This policy is configured to only allow roles specified in CmsPolicyOptions.DefaultShellModuleRoles, which by default only includes Roles.CmsEditors and Roles.CmsAdmins, other roles might got 403 errors when accessing the CMS shell. Here we add any custom roles needed to access the CMS shell.
+            services.Configure<CmsPolicyOptions>(options =>
+            {
+                options.DefaultShellModuleRoles = new List<string>
+                {
+                    Roles.CmsEditors,
+                    Roles.CmsAdmins,
+                    "YourCustomRole"   // Any custom role needed
+                };
+            });
+
             // Configure CatalogOptions
             services.Configure<CatalogOptions>(options =>
             {
