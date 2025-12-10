@@ -92,10 +92,14 @@ const ensureRootGitRepo = async () => {
   await execAsync("git add .gitmodules").catch(() => {});
 };
 
-const findGitDirs = async (rootDir, ignoreRules) => {
+const findGitDirs = async (rootDir, ignoreRules, maxDepth = Infinity) => {
   const results = [];
 
-  const walk = async (dir) => {
+  const walk = async (dir, depth) => {
+    if (depth > maxDepth) {
+      return;
+    }
+
     const entries = await fs.readdir(dir, { withFileTypes: true });
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name);
@@ -117,12 +121,12 @@ const findGitDirs = async (rootDir, ignoreRules) => {
           continue;
         }
 
-        await walk(fullPath);
+        await walk(fullPath, depth + 1);
       }
     }
   };
 
-  await walk(rootDir);
+  await walk(rootDir, 0);
   return results;
 };
 
@@ -148,9 +152,10 @@ const main = async () => {
   await ensureRootGitRepo();
 
   const ignoreRules = await loadGitignore(rootDir);
+  const maxDepth = 5;
 
   log("🔍 Scanning for Git submodules...");
-  const gitDirs = await findGitDirs(rootDir, ignoreRules);
+  const gitDirs = await findGitDirs(rootDir, ignoreRules, maxDepth);
 
   for (const gitDir of gitDirs) {
     const repoDir = path.dirname(gitDir);
