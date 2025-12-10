@@ -46,6 +46,11 @@ const findGitDirs = async () => {
           continue;
         }
 
+        // Skip heavy dependency trees
+        if (entry.name === "node_modules") {
+          continue;
+        }
+
         await walk(fullPath);
       }
     }
