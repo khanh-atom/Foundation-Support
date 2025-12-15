@@ -84,5 +84,16 @@ namespace Foundation.Features.CatalogContent.Product
 
             return StatusCode(404, "Product not found.");
         }
+
+        /// <summary>
+        /// Extra GET to reproduce routing ambiguity when multiple GET actions exist.
+        /// Sample usage (content URL): https://localhost:5000/en/sample-product
+        /// </summary>
+        [HttpGet]
+        public ActionResult LoadSizes(string productCode = null, string color = null)
+        {
+            // Intentionally simple to allow content SEO URLs without an action segment to be routed here instead of Index.
+            return StatusCode(500, $"Demo LoadSizes hit. productCode={productCode ?? "(null)"}, color={color ?? "(null)"}");
+        }
     }
 }
