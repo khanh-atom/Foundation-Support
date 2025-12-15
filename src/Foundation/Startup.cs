@@ -245,6 +245,12 @@ namespace Foundation
                 options.ArchivedThreshold = 60; // Set to 60 days
             });
 
+            services.Configure<OrderOptions>(o =>
+            {
+                o.ExpiredCartJobDays = 7;
+                o.ExpiredCartsRemovalJobExcludedCartName = new[] { "WishList" };
+            });
+
             services.Configure<EPiServer.Commerce.Dashboard.DashboardOptions >(options =>
             {
                 options.EnableTrackingSession = true;
