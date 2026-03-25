@@ -1,0 +1,3 @@
+[submodule "src/Foundation/Custom/Episerver-util-api"]
+	path = src/Foundation/Custom/Episerver-util-api
+	url = https://github.com/khanh-atom/Episerver-util-api
