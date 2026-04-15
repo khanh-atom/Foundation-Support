@@ -12,6 +12,7 @@ using EPiServer.ContentApi.Commerce;
 using EPiServer.ContentDefinitionsApi;
 using EPiServer.ContentManagementApi;
 using EPiServer.Data;
+using EPiServer.DependencyInjection;
 using EPiServer.Labs.ContentManager;
 using EPiServer.Labs.ProjectEnhancements;
 using EPiServer.Marketing.Testing.Web.Initializers;
@@ -39,6 +40,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Optimizely.Graph.Commerce;
 using Optimizely.Labs.MarketingAutomationIntegration.ODP;
 using System.IO;
 using TinymceDamPicker;
@@ -322,6 +324,14 @@ namespace Foundation
 
             // Adds the DAM selector button
             services.AddDamSelectButton();
+
+            services.AddContentDeliveryApi();
+            services.AddContentGraph(x =>
+            {
+                x.IncludeInheritanceInContentType = true;
+                x.PreventFieldCollision = true;
+            });
+            services.AddCommerceGraph();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
