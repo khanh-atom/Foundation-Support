@@ -1,3 +1,6 @@
 [submodule "src/Foundation/Custom/Episerver-util-api"]
 	path = src/Foundation/Custom/Episerver-util-api
 	url = https://github.com/khanh-atom/Episerver-util-api
+[submodule "src/Foundation/Custom/Foundation-zendesk"]
+	path = src/Foundation/Custom/Foundation-zendesk
+	url = https://github.com/khanh-atom/Foundation-zendesk.git
