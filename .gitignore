@@ -83,7 +83,6 @@ rebuild.cmd
 resetup.cmd
 src/Foundation/App_Data/*.txt
 src/Foundation/App_Data/*/*/
-src/Foundation/modules/
 /src/Foundation/wwwroot/js/main.min.js
 /src/Foundation/wwwroot/js/main.min.js.map
 /src/Foundation/wwwroot/scss/main.min.css
